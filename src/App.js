@@ -9,9 +9,18 @@ class App extends Component{
     }
 
     componentDidMount(){
-        fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
+        this._makeMovies();
+    }
+
+    _makeMovies = async () => {
+        const movies = await this._callApi();
+        this.setState({movies})
+    }
+
+    _callApi = () => {
+       return fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
             .then(response => response.json())
-            .then(json => { console.log(json.data.movies);return this.setState({movies : json.data.movies})})
+            .then(json => json.data.movies)
             .catch(error => console.log(error))
     }
 
@@ -31,10 +40,6 @@ class App extends Component{
 
     );
   }
-
-
 }
-
-
 
 export default App;
