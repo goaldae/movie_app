@@ -5,13 +5,22 @@ class Movie extends Component{
     static propTypes = {
         title : PropTypes.string.isRequired,
         poster : PropTypes.string.isRequired,
+        genres : PropTypes.array.isRequired,
+        synopsis : PropTypes.string.isRequired,
     }
 
     render() {
         return(
             <div className="Movie">
-                <MoviePoster poster={this.props.poster}/>
-                <h1>{this.props.title}</h1>
+                <div className = "Movie__columns">
+                    <MoviePoster poster={this.props.poster}/>
+                    <d>{this.props.genres}</d>
+                </div>
+
+                <div className = "Movie__columns">
+                    <h1>{this.props.title}</h1>
+                    <p1>{this.props.synopsis}</p1>
+                </div>
             </div>
         );
     }

@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import './App.css';
 import Movie from "./Movie";
 
-
-
 class App extends Component{
     state = {
     }
@@ -26,7 +24,13 @@ class App extends Component{
 
     _roadMovies = () => {
         const movies = this.state.movies.map((movie, index) => {
-            return <Movie title = {movie.title} poster = {movie.medium_cover_image} key = {index} />
+            return <Movie
+                title = {movie.title}
+                poster = {movie.medium_cover_image}
+                key = {index}
+                genres = {movie.genres}
+                synopsis = {movie.synopsis}
+            />
 
         })
         return movies;
