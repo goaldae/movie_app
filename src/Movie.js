@@ -14,15 +14,31 @@ class Movie extends Component{
             <div className="Movie">
                 <div className = "Movie__columns">
                     <MoviePoster poster={this.props.poster}/>
-                    <d>{this.props.genres}</d>
+
                 </div>
 
                 <div className = "Movie__columns">
                     <h1>{this.props.title}</h1>
+                    <div className = "Movie__columns">
+                        {this.props.genres.map((genre, index) => <Genres genre = {genre} key ={index}/>)}
+                    </div>
                     <p1>{this.props.synopsis}</p1>
                 </div>
             </div>
         );
+    }
+}
+
+class Genres extends  Component{
+    static propTypes ={
+        genre: PropTypes.string.isRequired,
+    }
+    render(){
+        return(
+            <d className = 'Genres'>
+                <span>{this.props.genre}</span>
+            </d>
+        )
     }
 }
 
