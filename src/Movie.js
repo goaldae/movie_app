@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import LinesEllipsis from 'react-lines-ellipsis'
+import './Movie.css';
 
 class Movie extends Component{
     static propTypes = {
@@ -12,48 +14,50 @@ class Movie extends Component{
     render() {
         return(
             <div className="Movie">
-                <div className = "Movie__columns">
-                    <MoviePoster poster={this.props.poster}/>
-
+                <div className = "Movie__Column">
+                    <MoviePoster poster={this.props.poster} alt={this.props.title} />
                 </div>
-
-                <div className = "Movie__columns">
+                <div className = "Movie__Column">
                     <h1>{this.props.title}</h1>
-                    <div className = "Movie__columns">
-                        {this.props.genres.map((genre, index) => <Genres genre = {genre} key ={index}/>)}
+                    <div className = "Movie__Genres">
+                        {this.props.genres.map((genre, index) => <MovieGenre  genre = {genre} key ={index}/>)}
                     </div>
-                    <p1>{this.props.synopsis}</p1>
+                    <div className="Movie__Synopsis">
+                        <LinesEllipsis
+                            text={this.props.synopsis}
+                            maxLine='3'
+                            ellipsis='...'
+                            trimRight
+                            basedOn='letters'
+                        />
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-class Genres extends  Component{
+class MovieGenre  extends  Component{
     static propTypes ={
         genre: PropTypes.string.isRequired,
     }
     render(){
         return(
-            <d className = 'Genres'>
-                <span>{this.props.genre}</span>
+            <d className = "Movie__Genre">
+                <span>{this.props.genre} </span>
             </d>
         )
     }
 }
 
-class MoviePoster extends Component{
-    static propTypes = {
-        poster : PropTypes.string.isRequired,
-    }
-
-    render() {
-        return(
-            <div className="MoviePoster">
-                <img src={this.props.poster}/>
-            </div>
-        );
-    }
+function MoviePoster({poster, alt}){
+    return (
+        <img src={poster} alt={alt} title={alt} className="Movie__Poster" />
+    )
+}
+MoviePoster.propTypes = {
+    poster: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired
 }
 
 export default Movie;

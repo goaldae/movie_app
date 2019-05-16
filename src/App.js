@@ -36,14 +36,14 @@ class App extends Component{
         return movies;
     }
 
-  render() {
-    return (
-        <div className="App">
-            {this.state.movies ? this._roadMovies() : "roading"}
-        </div>
-
-    );
-  }
+    render() {
+        const {movies} = this.state;
+        return (
+            <div className={movies ? "App" : "App--loading"}>
+                {movies ? this._roadMovies() : "loading"}
+            </div>
+        );
+    }
 }
 
 export default App;
