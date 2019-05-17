@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Movie from "./Movie";
+import Search from "./Search";
 
 class App extends Component{
     state = {
@@ -40,6 +41,7 @@ class App extends Component{
         const {movies} = this.state;
         return (
             <div className={movies ? "App" : "App--loading"}>
+                <Search/>
                 {movies ? this._roadMovies() : "loading"}
             </div>
         );
