@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import App from "./App";
-import Movie from "./Movie";
+import './Search.css';
 
 class Search extends Component {
 
     render() {
         return (
             <div className="Search">
-                <input type="text"
-                       placehodler="이름으로 검색하기" />
+                <input className="Movie__Search" type="text" placeholder="영화 이름을 입력하세요"/>
             </div>
         );
     }

@@ -42,7 +42,9 @@ class App extends Component{
         return (
             <div className={movies ? "App" : "App--loading"}>
                 <Search/>
-                {movies ? this._roadMovies() : "loading"}
+                <div className="Contents">
+                    {movies ? this._roadMovies() : "loading"}
+                </div>
             </div>
         );
     }
